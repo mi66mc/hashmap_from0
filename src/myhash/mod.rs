@@ -1,2 +1,2 @@
 mod myhash;
-pub use myhash::Pairs;
+pub use myhash::{HashMap};
