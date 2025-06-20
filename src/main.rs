@@ -3,9 +3,17 @@ mod myhash;
 use myhash::{HashMap};
 
 fn main() {
-    let mut hash = HashMap::new(100);
+    let mut map = HashMap::new(16);
 
-    hash.put("a", "b");
+    map.put("name", "John");
+    map.put("age", "25");
 
-    println!("{}", hash.get(&"a").unwrap_or(&"Not Found"));
+    println!("{:?}", map.get(&"name"));    // Some("John")
+    println!("{:?}", map.get(&"age"));     // Some("25")
+
+    map.put("name", "Carlos");
+    println!("{:?}", map.get(&"name"));    // Some("Carlos")
+
+    println!("{}", map.remove(&"age"));    // true
+    println!("{:?}", map.get(&"age"));     // None
 }

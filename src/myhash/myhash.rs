@@ -63,6 +63,18 @@ impl<K: Eq + Hash, V> HashMap<K, V> {
             }
         }
 
-        return None;
+        None
+    }
+
+    pub fn remove(&mut self, key: &K) -> bool {
+        let hashed = self.hash(key);
+        let bucket = &mut self.buckets[hashed];
+
+        if let Some(p) = bucket.iter().position(|pair| &pair.key == key)  {
+            bucket.remove(p);
+            return true;
+        }
+
+        false
     }
 }
